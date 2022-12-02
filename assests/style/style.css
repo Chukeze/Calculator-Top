@@ -90,4 +90,5 @@ table{
 .operation{
     padding: .5rem 0;
     width: 75px;
+    background-color: rgba(29,65,95,.88);
 }

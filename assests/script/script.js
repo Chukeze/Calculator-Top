@@ -100,15 +100,23 @@ const numbers = document.querySelectorAll('.Numbers');
 const operatoration = document.querySelectorAll('.operation');
 [...operatoration].forEach(el => el.addEventListener('click', () => {
     const item = document.createElement('p');
-    item.textContent = el.textContent;
     viewscreen.appendChild(item);
+    (el.textContent == "=") ? item.parentElement.removeChild(item) : viewscreen.appendChild(item,item.textContent = el.textContent);
+    //(el.textContent != "=") ? item.textContent = "" : ;
+    console.log(item.textContent == "=");
+    //viewscreen.appendChild(viewscreen.removeChild(item) );
 }))
 
-document.querySelector('#add').addEventListener('click', (num1, num2) => {
-    calculator.operators.add(num1, num2)
+const addclick = () => {
+    document.querySelector('#add').addEventListener('click', (num1=operatoration.item(el => el.textContent), num2) => {
+    calculator.operators.add(num1, num2);
 }, {passive: true});
-
+}
 document.querySelector('#delete').addEventListener('click', ()=>{
     count = 0;
     viewscreen.hasChildNodes ? viewscreen.removeChild(viewscreen.children.item(count--),-1) : null;
-},{passive: true})
+},{passive: true});
+
+document.querySelector('#equals').addEventListener('click', () =>{
+    //(document.querySelector('#add').addEventListener('click', )) ?  : null;
+})
