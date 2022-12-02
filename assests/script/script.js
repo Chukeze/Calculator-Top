@@ -1,13 +1,19 @@
 let numberOfButtons = 12;
 const numberButtonContainer = document.querySelector('.number-container');
+const viewscreen = document.querySelector('.viewscreen');
 let count;
 
 let calculator = {
     operators: {
-        add() {
-
+        add(a,b) {
+            return a + b;
         },
-        multiply() {},
+        subtract(a,b) {
+            return a - b;
+        },
+        multiply(array) {
+            return array.length ? array.reduce((count, next) => count * next) : 0;
+        },
         sum(){//use reduce here
         },
     },
@@ -26,7 +32,7 @@ let calculator = {
         },
         power : {
             symbol : 'x^y',
-            power() {},
+            power(a,b) {return a ** b},
         },
         sin : {
             symbol : 'sin',
@@ -51,13 +57,22 @@ let calculator = {
         Euler :{
             symbol : 'EXP',
             exp(){},
+        },
+        sum : {
+            sum(array){
+                return array.reduce((total,current) => total + current,0)
+            }
         }
     },
 }
 function fillOperation(){
     count = 0;
+    let nameofSymbol = ['add','subtract','multiply', 'divide', 'modular', 'equals'];
     const fillOperationButtons = document.querySelectorAll('.operation');
-    [...fillOperationButtons].map(operator => operator.textContent = calculator.symbols[count++])
+    [...fillOperationButtons].map(operator => operator.textContent = calculator.symbols[count++]);
+    for (let index = 0; index < nameofSymbol.length; index++) {
+        [...fillOperationButtons].map(el => el.id = nameofSymbol[index++]);
+    }
     //forEach(operator => operator.textContent = calculator.symbols[count]);
 }
 const createNumberButtons = (amount = numberOfButtons) => {
@@ -72,3 +87,28 @@ const createNumberButtons = (amount = numberOfButtons) => {
 }
 createNumberButtons(); 
 fillOperation();
+
+
+
+const numbers = document.querySelectorAll('.Numbers');
+[...numbers].forEach(el => el.addEventListener('click', () =>{
+    const item = document.createElement('p');
+    item.textContent = el.textContent;
+    viewscreen.appendChild(item);
+}));
+
+const operatoration = document.querySelectorAll('.operation');
+[...operatoration].forEach(el => el.addEventListener('click', () => {
+    const item = document.createElement('p');
+    item.textContent = el.textContent;
+    viewscreen.appendChild(item);
+}))
+
+document.querySelector('#add').addEventListener('click', (num1, num2) => {
+    calculator.operators.add(num1, num2)
+}, {passive: true});
+
+document.querySelector('#delete').addEventListener('click', ()=>{
+    count = 0;
+    viewscreen.hasChildNodes ? viewscreen.removeChild(viewscreen.children.item(count--),-1) : null;
+},{passive: true})
