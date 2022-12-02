@@ -1,7 +1,7 @@
 let numberOfButtons = 12;
 const numberButtonContainer = document.querySelector('.number-container');
-const specialOperatorsButtonContainer = document.querySelector('.special-operators');
 let count;
+
 let calculator = {
     operators: {
         add() {
@@ -54,17 +54,6 @@ let calculator = {
         }
     },
 }
-let goodarray = [];
-goodarray.push(...Array.from(calculator.specialOperators.memory));
-goodarray.push(calculator.specialOperators.square.symbol);
-goodarray.push(calculator.specialOperators.Euler.symbol);
-goodarray.push(calculator.specialOperators.cos.symbol);
-goodarray.push(calculator.specialOperators.log.symbol);
-goodarray.push(calculator.specialOperators.power.symbol);
-goodarray.push(calculator.specialOperators.sin.symbol);
-goodarray.push(calculator.specialOperators.tan.symbol);
-goodarray.push(calculator.specialOperators.squareroot.symbol);
-console.log(goodarray);
 function fillOperation(){
     count = 0;
     const fillOperationButtons = document.querySelectorAll('.operation');
@@ -81,19 +70,5 @@ const createNumberButtons = (amount = numberOfButtons) => {
     const numbers = document.querySelectorAll('.Numbers');
     numbers.forEach(el => el.textContent = calculator.numbers[count++]);
 }
-const specialOperators = (amount = Object.keys(calculator.specialOperators).length) => {
-    console.log(amount);
-    count = 0;
-    //specialOperatorsButtonContainer.style.setProperty("--repeat", -amount/4);
-    specialOperatorsButtonContainer.append(
-        ...Array.from({length: amount + 4}, () => (length > 1000) ? null : document.createElement("button"))
-    );
-    [...specialOperatorsButtonContainer.children].forEach(el => el.id = [count++]);
-    for (const iterator of goodarray) {
-        [...specialOperatorsButtonContainer.children].map(specialOp => specialOp.textContent = iterator)
-    }
-    //[...specialOperatorsButtonContainer.children].map(specialOp => specialOp.textContent = goodarray[3]);
-};
 createNumberButtons(); 
 fillOperation();
-specialOperators();
