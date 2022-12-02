@@ -5,13 +5,15 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 5rem;
+    align-content: space-between;
 }
 header{
     text-align: center;
 }
 main{
     display: flex;
+    flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
 }
@@ -21,14 +23,43 @@ main{
     border: 5px whitesmoke solid;
     border-radius: 3%;
     padding: 1rem 2rem;
+    display: grid;
+    grid-template: auto 1fr / 1fr 1fr 1fr;
+    gap: 10px;
 }
 .viewscreen{
     height: 150px;
     border: 5px ridge whitesmoke;
     border-radius: 5%;
+    grid-column: span 3;
+}
+.special-operators{
+    grid-column: span 2;
+}
+.number-container{
+    display: grid;
+    grid-template-columns: repeat(var(--repeat), 1fr);
+    grid-column: span 2;
+    border-radius: 5%;
+}
+.clear{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+.clear button{
+    padding: 1rem 2rem;
+    border-radius: 10%;
+    background-color: red;
 }
 table{
-    height: 70%;
-    border: 5px ridge whitesmoke;
+    height: 100%;
+    border: 1px ridge whitesmoke;
     border-radius: 5%;
+    padding: 1rem 1rem;
+    text-align: center;
+}
+.operation{
+    padding: .5rem 3rem;
 }
