@@ -13,8 +13,11 @@
     <main>
         <div class="calculator">
             <div class="viewscreen">
-                <p class="expression"></p>
-                <p class="answer"></p>
+                <div class="view">
+                    <p id="memory"></p>
+                    <p class="expression"></p>
+                    <p class="answer"></p>
+                </div>
             </div>
             <div class="special-operators">
                 <button>MC</button>
@@ -27,8 +30,8 @@
                 <button>&#8731</button>
                 <button>&#8721</button>
                 <button>Percentage</button>
-                <button>&#119987; ^ &#119858;</button>
-                <button>log&#119858;&#119987;</button>
+                <button>&#119987;<sup>&#119858;</sup></button>
+                <button>log<sub>&#119858;</sub>&#119987;</button>
                 <button>1/X</button>
                 <button>&#8723</button>
                 <button>EXP</button>
@@ -39,24 +42,26 @@
             </div>
             <div class="number-container"></div>
             <table >
-                <tr>
-                    <td><button class="operation"></button></td>
-                </tr>
-                <tr>
-                    <td><button class="operation"></button></td>
-                </tr>
-                <tr>
-                    <td><button class="operation"></button></td>
-                </tr>
-                <tr>
-                    <td><button class="operation"></button></td>
-                </tr>
-                <tr>
-                    <td><button class="operation"></button></td>
-                </tr>
-                <tr>
-                    <td><button class="operation" id="equals"></button></td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <td><button class="operation"></button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="operation"></button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="operation"></button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="operation"></button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="operation"></button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="operation" id="equals"></button></td>
+                    </tr>                    
+                </tbody>
             </table>
         </div>
     </main>
